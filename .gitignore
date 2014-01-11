@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+*.cfg
+*.txt
+*.gz
+*.sh
+*.log
+*.pkl
