@@ -8,8 +8,8 @@ import sys
 import tweepy
 import string
 import numpy as np
-import ConfigParser
-import cPickle as pickle
+import configparser as ConfigParser
+import pickle
 from datetime import datetime
 from collections import defaultdict
 
@@ -54,7 +54,7 @@ if "--build" in sys.argv:
 
 else:
     print("Loading ngrams...")
-    bigrams, trigrams = pickle.load(open("ngrams.pkl"))
+    bigrams, trigrams = pickle.load(open("ngrams.pkl", "rb"))
 
 print("Generating title...")
 title = [START, START]
@@ -98,4 +98,4 @@ if "--tweet" in sys.argv:
     auth.set_access_token(config.get(sect, "user_key"),
                           config.get(sect, "user_secret"))
     api = tweepy.API(auth)
-    api.update_status(sent)
+    api.update_status(status=sent)
